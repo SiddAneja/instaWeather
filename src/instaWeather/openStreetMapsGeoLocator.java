@@ -19,18 +19,27 @@ public class openStreetMapsGeoLocator {
   
   protected JSONParser jParse;
   
+  //Constructor no longer creates instance
   public openStreetMapsGeoLocator() {
     jParse = new JSONParser();
-    instance = new openStreetMapsGeoLocator();
   }
   
-  public openStreetMapsGeoLocator getInstance() {
+  //Switched to static method
+  public static openStreetMapsGeoLocator getInstance() {
+    if(instance == null) {
+      instance = new openStreetMapsGeoLocator();
+    }
     return instance;
   }
   
   public String sendRequest(String url) throws Exception{
     URL obj = new URL(url);
     HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+    
+    //Added a branch to check if the connection is invalid
+    if(con.getResponseCode() != 200) {
+      return null;
+    }
     
     BufferedReader input = new BufferedReader(new InputStreamReader(con.getInputStream()));
     String inputLine;

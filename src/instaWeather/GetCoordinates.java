@@ -9,14 +9,14 @@ public class GetCoordinates {
   
   public GetCoordinates(String address) {
     this.address = address;
-    coords = openStreetMapsGeoLocator.getInstance().getCoordinates(this.address);
+    this.coords = openStreetMapsGeoLocator.getInstance().getCoordinates(this.address);
   }
   
-  public double getLatitude() {
+  public Double getLatitude() {
    return coords.get("lat");
   }
   
-  public double getLogitude() {
+  public Double getLogitude() {
     return coords.get("lon");
   }
 }

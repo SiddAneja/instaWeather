@@ -32,12 +32,14 @@ public class openStreetMapsGeoLocator {
     return instance;
   }
   
-  public String sendRequest(String url) throws Exception{
-    URL obj = new URL(url);
-    HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+  private String getRequest(String url) throws Exception{
+    final URL obj = new URL(url);
+    final HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+    con.connect();
     
     //Added a branch to check if the connection is invalid
     if(con.getResponseCode() != 200) {
+      System.out.println(con.getResponseCode());
       return null;
     }
     
@@ -59,10 +61,10 @@ public class openStreetMapsGeoLocator {
     if(splitAddress.length == 0) {
       return null;
     }
-    query = new StringBuffer();
+    query = new StringBuffer(   );
     coordinates = new HashMap<String, Double>();
     
-    query.append("http://nominatim.openstreetmap.org/search?q=");
+    query.append("https://nominatim.openstreetmap.org/search?q=");
     
     for (int i = 0; i < splitAddress.length; i++) {
       query.append(splitAddress[i]);
@@ -75,12 +77,11 @@ public class openStreetMapsGeoLocator {
     log.debug("Query:" + query);
     
     try {
-      searchQuery = sendRequest(query.toString());
+      searchQuery = getRequest(query.toString());
     }
     catch(Exception e) {
       log.error("Error when trying to get data with the following query " + query);
     }
-    
     if(searchQuery == null) {
       return null;
     }

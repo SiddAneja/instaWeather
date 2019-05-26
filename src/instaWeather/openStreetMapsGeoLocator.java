@@ -61,7 +61,7 @@ public class openStreetMapsGeoLocator {
     if(splitAddress.length == 0) {
       return null;
     }
-    query = new StringBuffer(   );
+    query = new StringBuffer();
     coordinates = new HashMap<String, Double>();
     
     query.append("https://nominatim.openstreetmap.org/search?q=");
@@ -88,7 +88,6 @@ public class openStreetMapsGeoLocator {
     
     Object objt = JSONValue.parse(searchQuery);
     log.debug("obj=" + objt);
-    
     if (objt instanceof JSONArray) {
       JSONArray array = (JSONArray) objt;
       if (array.size() > 0) {

@@ -3,7 +3,7 @@ import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
-
+import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.JSONValue;
 import org.json.simple.parser.JSONParser;
@@ -82,5 +82,16 @@ public class getWeather {
   public Double getTemperatureFahrenheit(String address) {
     Double temperature = this.getTemperatureCelsius(address);
     return ((temperature * 9/5) + 32);
+  }
+  
+  public String getIcon(String address) {
+    JSONObject jsonObject = getInstance().callToAPI(address);
+    if(jsonObject == null) {
+      return null;
+    }
+    JSONArray weather = (JSONArray) jsonObject.get("weather");
+    JSONObject obj = (JSONObject) weather.get(0);
+    String icon = (String) obj.get("icon");
+    return icon;
   }
 }

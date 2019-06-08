@@ -7,6 +7,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
+import org.apache.log4j.BasicConfigurator;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
@@ -36,7 +37,7 @@ public class displayScreen {
 
   public void clock() {
     Thread clock = new Thread() {
-      public void run() {
+      public void run() { 
         try {
           while(true) {
             Calendar cal = new GregorianCalendar();
@@ -63,6 +64,7 @@ public class displayScreen {
    * Create the application.
    */
   public displayScreen() {
+    BasicConfigurator.configure();
     initialize();
     clock();
   }

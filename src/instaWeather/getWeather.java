@@ -94,4 +94,15 @@ public class getWeather {
     String icon = (String) obj.get("icon");
     return icon;
   }
+  
+  public String getDescription(String address) {
+    JSONObject jsonObject = getInstance().callToAPI(address);
+    if(jsonObject == null) {
+      return null;
+    }
+    JSONArray weather = (JSONArray) jsonObject.get("weather");
+    JSONObject obj = (JSONObject) weather.get(0);
+    String description = (String) obj.get("description");
+    return description;
+  }
 }

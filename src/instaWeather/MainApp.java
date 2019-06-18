@@ -1,7 +1,5 @@
 package instaWeather;
 
-import java.awt.BorderLayout;
-import java.awt.EventQueue;
 import java.io.IOException;
 import java.net.URL;
 import javax.swing.JFrame;
@@ -9,15 +7,13 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JLabel;
 import javax.swing.border.TitledBorder;
-import com.sun.prism.Image;
-import javax.swing.JToggleButton;
 import javax.swing.JRadioButton;
-import javax.swing.JRadioButtonMenuItem;
 import javax.swing.ButtonGroup;
 import javax.swing.ImageIcon;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
+@SuppressWarnings("serial")
 public class MainApp extends JFrame {
 
   private JPanel contentPane;

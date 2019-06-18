@@ -11,6 +11,10 @@ import org.apache.log4j.BasicConfigurator;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.Font;
+import javax.swing.JPanel;
+import javax.swing.border.SoftBevelBorder;
+import javax.swing.border.BevelBorder;
 
 public class displayScreen {
 
@@ -79,7 +83,7 @@ public class displayScreen {
     frame.getContentPane().setLayout(null);
     
     tf1 = new JTextField();
-    tf1.setBounds(147, 129, 116, 22);
+    tf1.setBounds(147, 129, 127, 22);
     frame.getContentPane().add(tf1);
     tf1.setColumns(10);
     
@@ -101,6 +105,18 @@ public class displayScreen {
     lbclock = new JLabel("");
     lbclock.setBounds(12, 13, 160, 49);
     frame.getContentPane().add(lbclock);
+    
+    JLabel lblInstaWeather = new JLabel("INSTA WEATHER");
+    lblInstaWeather.setFont(new Font("Calisto MT", Font.BOLD, 16));
+    lblInstaWeather.setBounds(135, 37, 148, 25);
+    frame.getContentPane().add(lblInstaWeather);
+    
+    JPanel panel = new JPanel();
+    panel.setBorder(new SoftBevelBorder(BevelBorder.LOWERED, null, null, null, null));
+    panel.setBounds(80, 90, 263, 118);
+    frame.getContentPane().add(panel);
+    
+    JLabel lblEnterYourAddress = new JLabel("Enter your Address:");
+    panel.add(lblEnterYourAddress);
   }
-
 }

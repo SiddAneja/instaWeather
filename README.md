@@ -3,5 +3,5 @@
 It then passes the coordinates onto OpenWeatherMaps (current weather) API to extract the weather information in JSON format.
 The program then process the JSON query and provides the user with weather through an interative UI.
 
-#How to run
+# How to run
 Fork the repository and then run the MainApp.java file.
